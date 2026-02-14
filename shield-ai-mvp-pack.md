@@ -13,6 +13,8 @@
   index.md
   mvp-scope.md
   roadmap.md
+  frontend-plan.md
+  backend-plan.md
   metrics.md
   risks.md
   decisions.md
@@ -20,6 +22,7 @@
 
 /user-stories
   index.md
+  US-0000-architecture-setup.md
   US-0001-url-check-free.md
   US-0002-message-checklist-free.md
   US-0003-shareable-verdict-free.md
@@ -34,6 +37,9 @@
 
 /tasks
   index.md
+  T-0000a-go-scaffolding.md
+  T-0000b-nextjs-scaffolding.md
+  T-0000c-ci-skeleton.md
   T-0001-url-normalization-cache.md
   T-0002-url-analysis-pipeline.md
   T-0003-message-analysis-service.md
@@ -77,6 +83,8 @@ This folder contains the management artifacts for the Shield AI MVP delivery.
 |----------|---------|
 | [mvp-scope.md](mvp-scope.md) | MVP scope definition, in/out boundaries |
 | [roadmap.md](roadmap.md) | Phased delivery plan |
+| [frontend-plan.md](frontend-plan.md) | Frontend US and tasks by phase |
+| [backend-plan.md](backend-plan.md) | Backend US and tasks by phase |
 | [metrics.md](metrics.md) | Success metrics and SLIs |
 | [risks.md](risks.md) | Risks and mitigations |
 | [decisions.md](decisions.md) | Key decisions and conflicts |
@@ -84,9 +92,51 @@ This folder contains the management artifacts for the Shield AI MVP delivery.
 
 ## Traceability
 
-- **PRD:** [PRD/index_PRD.md](../../PRD/index_PRD.md) v3.0
-- **ARD:** [ARD/Shield_AI_Security_ARD_Consolidated.md](../../ARD/Shield_AI_Security_ARD_Consolidated.md)
-- **Design Spec:** [Design Spec/Shield_Ai_Security_Design_Spec.md](../../Design%20Spec/Shield_Ai_Security_Design_Spec.md)
+- **PRD:** [PRD/index_PRD.md](../PRD/index_PRD.md) v3.0
+- **ARD:** [ARD/Shield_AI_Security_ARD_Consolidated.md](../ARD/Shield_AI_Security_ARD_Consolidated.md)
+- **Design Spec:** [Design Spec/Shield_Ai_Security_Design_Spec.md](../Design%20Spec/Shield_Ai_Security_Design_Spec.md)
+
+---
+
+--- file: /management/roadmap.md ---
+
+# Shield AI MVP Roadmap
+
+## Phases
+
+| Phase | Duration | Focus |
+|-------|----------|-------|
+| **Phase 0: Architecture Setup** | Week 1 | Go API scaffolding, Next.js app scaffolding, CI skeleton. Foundation for all feature work. |
+| **MVP1: Core URL Check** | Weeks 2–6 | Provider adapters, scoring engine, cache, Analysis Store, API, frontend URL input, rate limiting |
+| **MVP2: QR + Message** | Weeks 7–9 | QR decode, message analysis, OpenAI explanation, frontend QR scanner + message input |
+| **MVP3: Polish + Beta** | Weeks 10–12 | Shareable verdict cards, onboarding, feature flags, paywall, checkout |
+
+## Critical Path
+
+- Phase 0 complete before feature work (US-0000)
+- Provider PoC (Week 2)
+- OCR/Vision provider selection (Week 3)
+- Load testing (Week 10)
+
+## Release Target
+
+**MVP** — All P0 and P1 user stories delivered; exit criteria met (see [milestones.md](../github/milestones.md)).
+
+---
+
+--- file: /management/frontend-plan.md ---
+
+# Shield AI — Frontend Plan
+
+See [management/frontend-plan.md](management/frontend-plan.md) for full content. Organizes Frontend US and Tasks by phase (Phase 0–4).
+
+---
+
+--- file: /management/backend-plan.md ---
+
+# Shield AI — Backend Plan
+
+See [management/backend-plan.md](management/backend-plan.md) for full content. Organizes Backend US and Tasks by phase (Phase 0–4).
 
 ---
 
@@ -134,16 +184,18 @@ This folder contains the management artifacts for the Shield AI MVP delivery.
 
 # Shield AI MVP Roadmap
 
-## Phases (ARD §12.1)
+## Phases
 
 | Phase | Duration | Focus |
 |-------|----------|-------|
-| **MVP1: Core URL Check** | Weeks 1–6 | Provider adapters, scoring engine, cache, Analysis Store, API, frontend URL input, rate limiting |
+| **Phase 0: Architecture Setup** | Week 1 | Go API scaffolding, Next.js app scaffolding, CI skeleton. Foundation for all feature work. |
+| **MVP1: Core URL Check** | Weeks 2–6 | Provider adapters, scoring engine, cache, Analysis Store, API, frontend URL input, rate limiting |
 | **MVP2: QR + Message** | Weeks 7–9 | QR decode, message analysis, OpenAI explanation, frontend QR scanner + message input |
 | **MVP3: Polish + Beta** | Weeks 10–12 | Shareable verdict cards, onboarding, feature flags, paywall, checkout |
 
 ## Critical Path
 
+- Phase 0 complete before feature work (US-0000)
 - Provider PoC (Week 2)
 - OCR/Vision provider selection (Week 3)
 - Load testing (Week 10)
@@ -300,31 +352,90 @@ This folder contains the management artifacts for the Shield AI MVP delivery.
 
 # Shield AI User Stories Index
 
+## P0 (Must Have) — Foundation
+
+| ID | Title | Persona | Plan |
+|----|-------|---------|------|
+| [US-0000](US-0000-architecture-setup.md) | Architecture Setup & Project Configuration | Internal (Engineering) | [Frontend](../management/frontend-plan.md) / [Backend](../management/backend-plan.md) |
+
 ## P0 (Must Have)
 
-| ID | Title | Persona |
-|----|-------|---------|
-| [US-0001](US-0001-url-check-free.md) | URL Check (Free) | Cautious Everyday User |
-| [US-0002](US-0002-message-checklist-free.md) | Message Checklist (Free) | Cautious Everyday User |
-| [US-0003](US-0003-shareable-verdict-free.md) | Shareable Verdict (Free) | Family Safety Helper |
+| ID | Title | Persona | Plan |
+|----|-------|---------|------|
+| [US-0001](US-0001-url-check-free.md) | URL Check (Free) | Cautious Everyday User | [Frontend](../management/frontend-plan.md) / [Backend](../management/backend-plan.md) |
+| [US-0002](US-0002-message-checklist-free.md) | Message Checklist (Free) | Cautious Everyday User | [Backend](../management/backend-plan.md) |
+| [US-0003](US-0003-shareable-verdict-free.md) | Shareable Verdict (Free) | Family Safety Helper | [Frontend](../management/frontend-plan.md) / [Backend](../management/backend-plan.md) |
 
 ## P1 (Should Have)
 
-| ID | Title | Persona |
-|----|-------|---------|
-| [US-0004](US-0004-qr-scan-premium.md) | QR Scan (Premium) | Cautious Everyday User |
-| [US-0005](US-0005-ocr-vision-premium.md) | OCR + Vision (Premium) | Cautious Everyday User |
-| [US-0006](US-0006-paywall-checkout.md) | Paywall + Checkout | Cautious Everyday User |
+| ID | Title | Persona | Plan |
+|----|-------|---------|------|
+| [US-0004](US-0004-qr-scan-premium.md) | QR Scan (Premium) | Cautious Everyday User | [Frontend](../management/frontend-plan.md) / [Backend](../management/backend-plan.md) |
+| [US-0005](US-0005-ocr-vision-premium.md) | OCR + Vision (Premium) | Cautious Everyday User | [Frontend](../management/frontend-plan.md) / [Backend](../management/backend-plan.md) |
+| [US-0006](US-0006-paywall-checkout.md) | Paywall + Checkout | Cautious Everyday User | [Frontend](../management/frontend-plan.md) / [Backend](../management/backend-plan.md) |
 
 ## P1 (Supporting)
 
-| ID | Title | Persona |
-|----|-------|---------|
-| [US-0007](US-0007-contact-cta-capture.md) | Contact CTA Capture | All |
-| [US-0008](US-0008-onboarding-home-input.md) | Onboarding + Home Input Hub | All |
-| [US-0009](US-0009-settings-privacy-delete.md) | Settings + Privacy + Delete Data | All |
-| [US-0010](US-0010-ground-truth-labeling.md) | Ground Truth Labeling Pipeline | Internal |
-| [US-0011](US-0011-infrastructure-deployment.md) | Infrastructure + Deployment | Internal |
+| ID | Title | Persona | Plan |
+|----|-------|---------|------|
+| [US-0007](US-0007-contact-cta-capture.md) | Contact CTA Capture | All | [Frontend](../management/frontend-plan.md) / [Backend](../management/backend-plan.md) |
+| [US-0008](US-0008-onboarding-home-input.md) | Onboarding + Home Input Hub | All | [Frontend](../management/frontend-plan.md) |
+| [US-0009](US-0009-settings-privacy-delete.md) | Settings + Privacy + Delete Data | All | [Frontend](../management/frontend-plan.md) / [Backend](../management/backend-plan.md) |
+| [US-0010](US-0010-ground-truth-labeling.md) | Ground Truth Labeling Pipeline | Internal | [Backend](../management/backend-plan.md) |
+| [US-0011](US-0011-infrastructure-deployment.md) | Infrastructure + Deployment | Internal | [Backend](../management/backend-plan.md) |
+
+---
+
+--- file: /user-stories/US-0000-architecture-setup.md ---
+
+# US-0000: Architecture Setup & Project Configuration
+
+## Story ID
+US-0000
+
+## Persona
+Internal (Engineering)
+
+## User Story
+As an **engineering team**, we want to **configure the project architecture with Go API and Next.js app scaffolding**, so that we have a clear foundation to build features on, with proper package boundaries and config per ARD.
+
+## Problem / Context
+ARD §4.2 defines the architecture: Go modular monolith with packages `handler`, `service`, `provider`, `cache`, `storage`; Next.js on Vercel. US-0011 covers deployment but not project scaffolding. Feature work requires this foundation first.
+
+## Scope
+
+**In:** Go API package structure, main entry, router skeleton, health check; Next.js app structure, routing, env config, Supabase client setup; env schema, config loading; base CI (lint/test). No feature implementation—only scaffolding and wiring.
+
+**Out:** Provider adapters, scoring engine, feature endpoints, UI components.
+
+## Acceptance Criteria
+
+### AC1: Go Package Structure
+**Given** the Go API project **When** inspected **Then** it has packages `handler`, `service`, `provider`, `cache`, `storage` with empty interfaces/stubs per ARD §4.2.
+
+### AC2: Next.js App Structure
+**Given** the Next.js app **When** inspected **Then** it has routes for Home, Settings, and a placeholder verdict page; env config and Supabase client setup.
+
+### AC3: Health Check
+**Given** the Go API is running **When** `GET /health` is called **Then** it returns 200 with a simple status payload.
+
+### AC4: CI Pipeline
+**Given** a PR is opened **When** CI runs **Then** lint and test execute for both Go and Next.js (or at least one).
+
+### AC5: Config from Env
+**Given** the application runs **When** config is loaded **Then** all config comes from environment variables; no secrets hardcoded in code.
+
+## Priority
+P0 (blocker for all other work)
+
+## Linked Tasks
+- [T-0000a](../tasks/T-0000a-go-scaffolding.md) — Go API Project Scaffolding
+- [T-0000b](../tasks/T-0000b-nextjs-scaffolding.md) — Next.js App Scaffolding
+- [T-0000c](../tasks/T-0000c-ci-skeleton.md) — CI Skeleton (GitHub Actions)
+
+## Plan
+- [Frontend Plan](../management/frontend-plan.md) (Phase 0)
+- [Backend Plan](../management/backend-plan.md) (Phase 0)
 
 ---
 
@@ -1156,10 +1267,25 @@ P0 (cross-cutting)
 
 # Shield AI Tasks Index
 
+## By Plan
+
+### Phase 0 — Foundation (Cross-cutting)
+
+| Task | Description | Owner |
+|------|-------------|-------|
+| [T-0000a](T-0000a-go-scaffolding.md) | Go API Project Scaffolding | BE |
+| [T-0000b](T-0000b-nextjs-scaffolding.md) | Next.js App Scaffolding | FE |
+| [T-0000c](T-0000c-ci-skeleton.md) | CI Skeleton (GitHub Actions) | Infra |
+
+### Frontend Plan / Backend Plan
+
+See [frontend-plan.md](../management/frontend-plan.md) and [backend-plan.md](../management/backend-plan.md).
+
 ## By Story
 
 | Story | Tasks |
 |-------|-------|
+| US-0000 | T-0000a, T-0000b, T-0000c |
 | US-0001 | T-0001, T-0002 |
 | US-0002 | T-0003 |
 | US-0003 | T-0004 |
@@ -1176,11 +1302,117 @@ P0 (cross-cutting)
 
 | Owner | Tasks |
 |-------|-------|
-| FE | T-0004, T-0009, T-0010, T-0011 |
-| BE | T-0001, T-0002, T-0003, T-0005, T-0006, T-0008 |
-| Infra | T-0013, T-0014, T-0015, T-0016 |
+| FE | T-0000b, T-0004, T-0009, T-0010, T-0011 (partial) |
+| BE | T-0000a, T-0001, T-0002, T-0003, T-0005, T-0006, T-0008, T-0011 (partial) |
+| Infra | T-0000c, T-0013, T-0014, T-0015, T-0016 |
 | QA | T-0012 (partial) |
 | Sec | T-0014 (partial) |
+
+---
+
+--- file: /tasks/T-0000a-go-scaffolding.md ---
+
+# T-0000a: Go API Project Scaffolding
+
+## Task ID
+T-0000a
+
+## Related Story
+[US-0000](../user-stories/US-0000-architecture-setup.md) — Architecture Setup & Project Configuration
+
+## Owner
+BE
+
+## Description / Goal
+Create the Go API project structure with packages `handler`, `service`, `provider`, `cache`, `storage` per ARD §4.2. Implement main entry, router skeleton (chi/gin/fiber), and health check endpoint. No feature logic—only scaffolding.
+
+## Implementation Steps
+1. Initialize Go module (e.g., `go mod init github.com/shield-ai/api`).
+2. Create package directories: `internal/handler`, `internal/service`, `internal/provider`, `internal/cache`, `internal/storage`.
+3. Add empty interfaces or stubs in each package (e.g., `Provider` interface in `provider`).
+4. Implement main entry point with HTTP server setup.
+5. Add router (chi, gin, or fiber) with `GET /health` returning 200.
+6. Add config loading from env (port, log level, etc.); no secrets in code.
+7. Add basic structured logging (zerolog or zap).
+
+## Definition of Done
+- [ ] All packages exist with clear boundaries
+- [ ] `GET /health` returns 200
+- [ ] Config loaded from env
+- [ ] Server starts and responds to health check
+
+## Estimation
+S | Complexity: 2
+
+---
+
+--- file: /tasks/T-0000b-nextjs-scaffolding.md ---
+
+# T-0000b: Next.js App Scaffolding
+
+## Task ID
+T-0000b
+
+## Related Story
+[US-0000](../user-stories/US-0000-architecture-setup.md) — Architecture Setup & Project Configuration
+
+## Owner
+FE
+
+## Description / Goal
+Create the Next.js app with app router structure, routes for Home, Settings, and placeholder verdict page. Configure env, Supabase client setup. Mobile-first base layout.
+
+## Implementation Steps
+1. Initialize Next.js app (App Router) with TypeScript.
+2. Create route structure: `/` (Home), `/settings`, `/verdict` (placeholder).
+3. Add base layout with responsive container.
+4. Configure environment variables (`.env.example` with `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`).
+5. Add Supabase client initialization (createClient).
+6. Add placeholder pages with minimal content.
+7. Configure API base URL for backend (env var).
+
+## Definition of Done
+- [ ] Routes exist for Home, Settings, Verdict
+- [ ] Supabase client configured
+- [ ] Env schema documented in .env.example
+- [ ] App runs locally
+
+## Estimation
+S | Complexity: 2
+
+---
+
+--- file: /tasks/T-0000c-ci-skeleton.md ---
+
+# T-0000c: CI Skeleton (GitHub Actions)
+
+## Task ID
+T-0000c
+
+## Related Story
+[US-0000](../user-stories/US-0000-architecture-setup.md) — Architecture Setup & Project Configuration
+
+## Owner
+Infra / BE
+
+## Description / Goal
+Set up GitHub Actions CI pipeline that runs lint and test on PR. Covers Go and/or Next.js. No deployment—only validation.
+
+## Implementation Steps
+1. Create `.github/workflows/ci.yml` (or extend existing).
+2. Add job for Go: `go build`, `go test`, `golangci-lint` (or similar).
+3. Add job for Next.js: `npm ci`, `npm run lint`, `npm run build` (if applicable).
+4. Trigger on push to main and on pull_request.
+5. Ensure jobs run in parallel where possible.
+6. Add basic caching for dependencies (Go modules, npm).
+
+## Definition of Done
+- [ ] CI runs on PR
+- [ ] Lint and test execute for at least Go (or Next.js if Go not yet present)
+- [ ] Failing lint/test blocks merge (or reports status)
+
+## Estimation
+XS | Complexity: 1
 
 ---
 
