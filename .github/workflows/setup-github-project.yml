@@ -1,0 +1,27 @@
+# Shield AI MVP - One-time setup of GitHub labels, milestone, and issues
+# Run manually from Actions tab → "Setup GitHub Project" → Run workflow
+name: Setup GitHub Project
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run setup script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
+        run: node scripts/setup-github-project.mjs
